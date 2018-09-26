@@ -1,5 +1,5 @@
 exports.keyboardLayer = new Layer
-	x:0, y:Screen.height, width:Screen.width, height:432
+	x:0, y:Screen.height, width:Screen.width, height:432, visible: false
 	html:"<img style='width: 100%;' src='modules/keyboard.png'/>"
 
 #screen width vs. size of image width
