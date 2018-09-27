@@ -28,32 +28,19 @@ _inputStyle =
 				return calculatePixelRatio(layer, paddingValue)
 
 			# If we have multiple values they come as string (e.g. "1 2 3 4")
-			paddingValues = layer._properties.padding.split(" ")
+			padding = layer._properties.padding
 
-			switch paddingValues.length
-				when 4
-					padding.top = parseFloat(paddingValues[0])
-					padding.right = parseFloat(paddingValues[1])
-					padding.bottom = parseFloat(paddingValues[2])
-					padding.left = parseFloat(paddingValues[3])
+			if not padding.left?
+				padding.left = 0
 
-				when 3
-					padding.top = parseFloat(paddingValues[0])
-					padding.right = parseFloat(paddingValues[1])
-					padding.bottom = parseFloat(paddingValues[2])
-					padding.left = parseFloat(paddingValues[1])
+			if not padding.right?
+				padding.right = 0
 
-				when 2
-					padding.top = parseFloat(paddingValues[0])
-					padding.right = parseFloat(paddingValues[1])
-					padding.bottom = parseFloat(paddingValues[0])
-					padding.left = parseFloat(paddingValues[1])
+			if not padding.top?
+				padding.top = 0
 
-				else
-					padding.top = parseFloat(paddingValues[0])
-					padding.right = parseFloat(paddingValues[0])
-					padding.bottom = parseFloat(paddingValues[0])
-					padding.left = parseFloat(paddingValues[0])
+			if not padding.bottom?
+				padding.bottom = 0
 
 			# Return as 4-value string (e.g "1px 2px 3px 4px")
 			"#{padding.top * pixelMultiplier}px #{padding.right * pixelMultiplier}px #{padding.bottom * pixelMultiplier}px #{padding.left * pixelMultiplier}px"
